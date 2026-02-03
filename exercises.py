@@ -25,8 +25,8 @@ def check_letter():
         if not letter.isalpha() or not len(letter)==1:
             print("Sorry, invalid entry")
 
-    if letter in vowel:
-        print( f" The letter{letter} is a vowel")
+    if letter.lower() in vowel:
+        print( f" The letter {letter} is a vowel")
     else:
         print(f"The letter {letter} is a consonant.")
 
@@ -57,11 +57,15 @@ def check_voting_eligibility():
     VOTING_AGE = 18
     age = 0
 
-    while not age or type(age)== int:
+    while True:
+
         age = input("Please enter your age:\n")
 
-        if not age or type(age)== int:
+        if age.isdigit() and int(age) >= 0:
+            break
+        else:
             print("Sorry, invalid entry.")
+        
 
     if int(age) >= VOTING_AGE:
         print("You are eligible to vote")
@@ -72,3 +76,4 @@ def check_voting_eligibility():
 
 # Call the function
 check_voting_eligibility()
+
